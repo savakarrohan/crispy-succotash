@@ -1,1 +1,7 @@
 .venv
+
+# ignore migrations
+*.sqlite3
+
+# ignore pycache
+__pycache__
