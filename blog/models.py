@@ -11,10 +11,12 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_=True)
-    
-    # Ordering methodology metadata:
     class Meta:
+        """Ordering methodology metadata:"""
         ordering = ['-publish']
+        indexes = [
+            models.Index(fields=["-publish"]),
+        ]
     
     def __str__(self) -> str:
         return self.title
