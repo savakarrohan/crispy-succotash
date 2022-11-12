@@ -4,6 +4,12 @@ from django.utils import timezone
 # Create your models here.
 class Post(models.Model):
     """ Post object """
+    
+    class Status(models.TextChoices):
+        """ To chose between draft and published version of a post"""
+        DRAFT = "DF", "Draft"
+        PUBLISHED = "PB", "Published"
+        
     title = models.CharField(max_length=240)
     slug = models.SlugField(max_length=240)
     body = models.TextField()
