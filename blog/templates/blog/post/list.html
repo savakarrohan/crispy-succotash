@@ -10,7 +10,7 @@ My Blog
 {% for post in posts %}
 <h2>
     <a href="{% url 'blog:post_detail' post.id %}">
-        {{ post.detail}}
+        {{ post.title}}
     </a>
 </h2>
 <p class="date">
