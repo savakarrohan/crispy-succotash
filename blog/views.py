@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, Comment
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 from django.views.generic import ListView
-from .forms import EmailPostForm
+from .forms import EmailPostForm, CommentForm
 from django.core.mail import send_mail
+from django.views.decorators.http import require_POST
 # Create your views here.
 def post_detail(request, year, month, day, post):
     """Detail view for each post"""
@@ -41,3 +42,18 @@ def post_share(request, post_id):
         else:
             form1 = EmailPostForm()
     return render(request,'blog/post/share.html',{'post':post,'form':form1, 'sent':sent})
+
+@require_POST
+def post_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
+    comment = None
+    # What happens when a comment is published.
+    form = CommentForm(data=request.POST)
+    if form.is_valid():
+        # Create a comment object without saving to database
+        comment = form.save(commit=False)
+        # Assign post to comment
+        comment.post = post
+        # Save the comment to database
+        comment.save()
+    return render(request, 'blog/post/comment.html',{'post':post, 'form': form, 'comment':comment,})
