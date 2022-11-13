@@ -20,6 +20,6 @@ class CommentAdmin(admin.ModelAdmin):
     """
     Comments added to the admin field
     """
-    list_display= ['name', 'email', 'post','created', 'update','activte']
-    list_filter = ['active', 'created', 'updated']
+    list_display= ['name', 'email', 'post','created', 'update','active']
+    list_filter = ['active', 'created', 'update']
     search_fields = ['name', 'email', 'body']
