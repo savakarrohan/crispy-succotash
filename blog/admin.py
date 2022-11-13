@@ -15,6 +15,7 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'publish'
     ordering = ['status','publish']
     
+@admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     """
     Comments added to the admin field
