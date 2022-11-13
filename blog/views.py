@@ -3,6 +3,7 @@ from .models import Post
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 from django.views.generic import ListView
 from .forms import EmailPostForm
+from django.core.mail import send_mail
 # Create your views here.
 def post_list(request):
     """ Post list view"""
@@ -37,15 +38,21 @@ class PostListView(ListView):
     template_name = "blog/post/list.html"
 def post_share(request, post_id):
     """
-    Form view
+    Form view to share by mail the post
     """
     post = get_object_or_404(Post, id = post_id, status=Post.status.PUBLISHED)
+    sent = False
     if request.method == "POST":
         # When the form gets submitted
         form = EmailPostForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
             # Send Email
+            post_url = request.build_absolute_uri(post.get_absolute_url())
+            subject = f"{cd['name']} recommends you to read {post.title}"
+            message = f"Read {post.title} at {post_url} \n \n {cd['name']} \'s comments {cd['name']}"
+            send_mail(subject, message, 'rohansavakar@gmail.com', [cd['to']])
+            sent = True
         else:
             form = EmailPostForm()
-    return render(request,'blog/post/share.html',{'post':post, 'form':form,})
+    return render(request,'blog/post/share.html',{'post':post, 'form':form, 'sent':sent})
