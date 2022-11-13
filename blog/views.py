@@ -24,13 +24,14 @@ def post_share(request, post_id):
     """
     Form view to share by mail the post
     """
-    post = get_object_or_404(Post, id = post_id, status=Post.Status.PUBLISHED)
+    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
     sent = False
+    form1 = EmailPostForm()
     if request.method == "POST":
         # When the form gets submitted
-        form = EmailPostForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
+        form1 = EmailPostForm(request.POST)
+        if form1.is_valid():
+            cd = form1.cleaned_data
             # Send Email
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f"{cd['name']} recommends you to read {post.title}"
@@ -38,5 +39,5 @@ def post_share(request, post_id):
             send_mail(subject, message, 'rohansavakar@gmail.com', [cd['to']])
             sent = True
         else:
-            form = EmailPostForm()
-    return render(request,'blog/post/share.html',{'post':post, 'form':form, 'sent':sent})
+            form1 = EmailPostForm()
+    return render(request,'blog/post/share.html',{'post':post,'form':form1, 'sent':sent})
