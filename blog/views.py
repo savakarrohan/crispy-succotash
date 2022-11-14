@@ -9,9 +9,15 @@ from django.views.decorators.http import require_POST
 def post_detail(request, year, month, day, post):
     """Detail view for each post"""
     post = get_object_or_404(Post,status=Post.Status.PUBLISHED, slug=post, publish__year=year, publish__month=month, publish__day=day)
-    
+    # Comments
+    # List the comments in the respective post
+    comments = post.comments.filter(active=True)
+    # Form for the users to comment
+    form = CommentForm
     return render(request,'blog/post/detail.html',{
-        'post':post
+        'post':post,
+        'comments':comments,
+        'form':form,
     })
 class PostListView(ListView):
     """
