@@ -7,19 +7,22 @@ class PostAdmin(admin.ModelAdmin):
     """
     Post views added to the admin field
     """
-    list_display = ['title','slug','author','publish','status']
-    list_filter = ['status','created', 'publish', 'author']
-    search_fields = ['title', 'body']
-    prepopulated_fields = {'slug': ('title',)}
-    raw_id_fields = ['author']
-    date_hierarchy = 'publish'
-    ordering = ['status','publish']
-    
+
+    list_display = ["title", "slug", "author", "publish", "status"]
+    list_filter = ["status", "created", "publish", "author"]
+    search_fields = ["title", "body"]
+    prepopulated_fields = {"slug": ("title",)}
+    raw_id_fields = ["author"]
+    date_hierarchy = "publish"
+    ordering = ["status", "publish"]
+
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     """
     Comments added to the admin field
     """
-    list_display= ['name', 'email', 'post','created', 'update','active']
-    list_filter = ['active', 'created', 'update']
-    search_fields = ['name', 'email', 'body']
+
+    list_display = ["name", "email", "post", "created", "update", "active"]
+    list_filter = ["active", "created", "update"]
+    search_fields = ["name", "email", "body"]
