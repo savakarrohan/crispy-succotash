@@ -1,12 +1,14 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post, Comment
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
-from .forms import EmailPostForm, CommentForm
 from django.core.mail import send_mail
-from django.views.decorators.http import require_POST
-from taggit.models import Tag
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Count
+from django.shortcuts import get_object_or_404, render
+from django.views.decorators.http import require_POST
+from django.views.generic import ListView
+from taggit.models import Tag
+
+from .forms import CommentForm, EmailPostForm
+from .models import Comment, Post
+
 
 # Create your views here.
 def post_detail(request, year, month, day, post):
