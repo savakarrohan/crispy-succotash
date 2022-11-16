@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     # Third party apps
     "taggit",
+    # Sitemap framework
+    "django.contrib.sites",
+    "django.contrib.sitemaps",
 ]
 
 MIDDLEWARE = [
