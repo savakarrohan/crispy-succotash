@@ -6,7 +6,7 @@ class PostSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.9
 
-    def item(self):
+    def items(self):
         return Post.published.all()
 
     def lastmod(self, obj):
