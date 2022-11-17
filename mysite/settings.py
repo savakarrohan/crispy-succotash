@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     # Database apps
     "django.contrib.postgres",
+    # Django Accounts
+    "account.apps.AccountConfig",
 ]
 
 MIDDLEWARE = [
