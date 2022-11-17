@@ -10,3 +10,6 @@ migrations/
 
 # Ignore Vscode settings
 .vscode
+
+# ignore json data
+mysite_data.json
