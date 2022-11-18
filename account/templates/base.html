@@ -18,21 +18,21 @@
 
             {% if request.user.is_authenticated %}
             <ul class="menu">
-                <li {% if section=='dashboard' %} class='selected' {% endif %}>
+                <li {% if section == 'dashboard' %}class='selected' {% endif %}>
                     <a href="{% url 'dashboard' %}">My Dashboard</a>
                 </li>
-                <li {% if section=='images' %} class='selected' {% endif %}>
-                    <a href="{% url '#' %}">Images</a>
+                <li {% if section == 'images' %} class='selected' {% endif %}>
+                    <a href="#">Images</a>
                 </li>
-                <li {% if section=='people' %} class='selected' {% endif %}>
-                    <a href="{% url '#' %}">people</a>
+                <li {% if section == 'people' %} class='selected' {% endif %}>
+                    <a href="#">people</a>
                 </li>
             </ul>
             {% endif %}
             <span class="user">
 
                 {% if request.user.is_authenticated %}
-                Hello {{ request.user.first_name| default:request.user.user_name }},
+                Hello {{ request.user.first_name|default:request.user.username }},
                 <a href="{% url 'logout' %}">
                     Logout
                 </a>
@@ -50,5 +50,7 @@
             {% endblock content %}
         </div>
     </body>
+
+
 
 </html>
