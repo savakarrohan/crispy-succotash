@@ -143,3 +143,8 @@ EMAIL_HOST_USER = "rohansavakar@gmail.com"
 EMAIL_HOST_PASSWORD = "ngkirniksxvsciqp"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+# Login views and e.t.c
+LOGIN_REDIRECT_URL = "dashboard"
+LOGIN_URL = "login"
+LOGOUT_URL = "logout"
