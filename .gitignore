@@ -13,3 +13,6 @@ migrations/
 
 # ignore json data
 mysite_data.json
+
+# Ignore the media directory
+/media
