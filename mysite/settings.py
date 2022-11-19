@@ -165,3 +165,9 @@ AUTHENTICATION_BACKENDS = [
     "account.authentication.EmailAuthBackend",
     "social_core.backends.google.GoogleOAuth2",
 ]
+
+# Social authentication of gmail account
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = (
+    "988569714758-jd0m25v868njhil95v34ml0v9aj4ud6k.apps.googleusercontent.com"
+)
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
