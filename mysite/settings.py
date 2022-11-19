@@ -33,6 +33,8 @@ SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Accounts
+    "account.apps.AccountConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -48,8 +50,6 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     # Database apps
     "django.contrib.postgres",
-    # Django Accounts
-    "account.apps.AccountConfig",
 ]
 
 MIDDLEWARE = [

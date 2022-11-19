@@ -12,7 +12,7 @@ urlpatterns = [
     path("", views.dashboard, name="dashboard"),
     # Change password urls
     path(
-        "password-change",
+        "password-change/",
         auth_views.PasswordChangeView.as_view(),
         name="password-change",
     ),
@@ -20,5 +20,19 @@ urlpatterns = [
         "password-change/done/",
         auth_views.PasswordChangeDoneView.as_view(),
         name="password_change_done",
+    ),
+    # Password reset urls
+    path(
+        "password-reset/", auth_views.PasswordResetView.as_view(), name="password_reset"
+    ),
+    path(
+        "password-reset/done/",
+        auth_views.PasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    path(
+        "password-reset/complete/",
+        auth_views.PasswordResetCompleteView.as_view(),
+        name="password_reset_complete",
     ),
 ]
