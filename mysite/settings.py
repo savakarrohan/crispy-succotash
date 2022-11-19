@@ -150,3 +150,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 LOGIN_REDIRECT_URL = "dashboard"
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
+
+# Media files involved during storage
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
