@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Custom apps
     "blog.apps.BlogConfig",
+    "images.apps.ImagesConfig",
     # Third party apps
     "taggit",
     # Sitemap framework
