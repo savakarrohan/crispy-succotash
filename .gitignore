@@ -16,3 +16,7 @@ mysite_data.json
 
 # Ignore the media directory
 /media
+
+# Ignore the certification files
+*.crt
+*.key
