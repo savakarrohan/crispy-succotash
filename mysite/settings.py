@@ -137,12 +137,14 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Email Server configuration
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "rohansavakar@gmail.com"
-EMAIL_HOST_PASSWORD = "ngkirniksxvsciqp"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# Email Server configuration For Gmail
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_HOST_USER = "rohansavakar@gmail.com"
+# EMAIL_HOST_PASSWORD = "ngkirniksxvsciqp"
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# Email at the console.
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # Login views and e.t.c
 LOGIN_REDIRECT_URL = "dashboard"
