@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     "django.contrib.postgres",
     # Authentication apps
     "social_django",
+    # Extensions for https server e.t.c
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
