@@ -49,8 +49,5 @@ def register(request):
             new_user.save()
             return render(request, "account/register_done.html", {"new_user": new_user})
     else:
-        """
-        If only a get request display an empty form
-        """
         user_form = UserRegistrationForm()
     return render(request, "account/register.html", {"user_form": user_form})

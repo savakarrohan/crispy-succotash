@@ -41,4 +41,5 @@ urlpatterns = [
     # All above auth views located in the urls module of auth
     path("", include("django.contrib.auth.urls")),
     path("", views.dashboard, name="dashboard"),
+    path("register/", views.register, name="register"),
 ]
