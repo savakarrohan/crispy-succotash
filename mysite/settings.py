@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     # Database apps
     "django.contrib.postgres",
+    # Authentication apps
+    "social_django",
 ]
 
 MIDDLEWARE = [
