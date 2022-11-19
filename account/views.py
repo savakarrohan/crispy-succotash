@@ -1,9 +1,8 @@
-from atexit import register
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
-from .forms import LoginForm
+from .forms import LoginForm, UserRegistrationForm
 
 # Create your views here.
 def user_login(request):
@@ -29,4 +28,29 @@ def user_login(request):
 
 @login_required
 def dashboard(request):
+    """
+    Display the dashboard of a newly signed in user
+    """
     return render(request, "account/dashboard.html", {"section": "dashboard"})
+
+
+def register(request):
+    """
+    If there is a post request validate the form and save a new user
+    """
+    if request.method == "POST":
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but don't save it yet
+            new_user = user_form.save(commit=False)
+            # Set the chose password
+            new_user.set_password(user_form.cleaned_data["password"])
+            # Save the user object
+            new_user.save()
+            return render(request, "account/register_done.html", {"new_user": new_user})
+    else:
+        """
+        If only a get request display an empty form
+        """
+        user_form = UserRegistrationForm()
+    return render(request, "account/register.html", {"user_form": user_form})
