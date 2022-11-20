@@ -21,6 +21,11 @@ class ImageCreateForm(forms.ModelForm):
             )
 
     def save(self, force_insert=False, force_update=False, commit=True):
+        """
+        image created without saving to database.
+        URL retrieved from the url field
+        Save method called of the image field... Unsure
+        """
         image = super().save(commit=True)
         image_url = self.cleaned_data["url"]
         name = slugify(image.title)
